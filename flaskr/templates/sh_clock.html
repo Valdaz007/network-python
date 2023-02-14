@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <code>
+    {% for result in results %}
+      <p>{{result}}</p>
+    {% endfor %}
+  </code>
+{% endblock content %}
