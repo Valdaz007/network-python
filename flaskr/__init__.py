@@ -12,20 +12,79 @@ rt1 = {
 
 @app.route("/")
 def index():
-  return "#"
+  return render_template(
+    'index.html',
+    title='home'
+  )
   
 @app.route("/sh_clock")
 def sh_clock():
-  return "#"
+  try:
+    shh_connection = netmiko.ConnectHandler(**rt1)
+    cmd_results = send_command('sh clock')
+    cmd_results = cmd_results.split('\n')
+    ssh_connection.disconnect()
+    return render_template(
+      'sh_clock.html',
+      title='sh_clock',
+      results = cmd_results
+    )
+  except:
+    return render_template(
+      'index.html',
+      title='home - something went wrong!'
+    )
   
 @app.route("/sh_run")
 def sh_run():
-  return "#"
+  try:
+    shh_connection = netmiko.ConnectHandler(**rt1)
+    cmd_results = send_command('sh run')
+    cmd_results = cmd_results.split('\n')
+    ssh_connection.disconnect()
+    return render_template(
+      'sh_run.html',
+      title='sh_run',
+      results = cmd_results
+    )
+  except:
+    return render_template(
+      'index.html',
+      title='home - something went wrong!'
+    )
   
 @app.route("/sh_ip_int_br")
 def sh_ip_int_br():
-  return "#"
+  try:
+    shh_connection = netmiko.ConnectHandler(**rt1)
+    cmd_results = send_command('sh ip int brief')
+    cmd_results = cmd_results.split('\n')
+    ssh_connection.disconnect()
+    return render_template(
+      'sh_ip_int_br.html',
+      title='sh_ip_int_br',
+      results = cmd_results
+    )
+  except:
+    return render_template(
+      'index.html',
+      title='home - something went wrong!'
+    )
   
 @app.route("/sh_int")
 def sh_int():
-  return "#"
+  try:
+    shh_connection = netmiko.ConnectHandler(**rt1)
+    cmd_results = send_command('sh int')
+    cmd_results = cmd_results.split('\n')
+    ssh_connection.disconnect()
+    return render_template(
+      'sh_int.html',
+      title='sh_int',
+      results = cmd_results
+    )
+  except:
+    return render_template(
+      'index.html',
+      title='home - something went wrong!'
+    )
