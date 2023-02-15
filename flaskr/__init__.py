@@ -21,7 +21,7 @@ def index():
 def sh_clock():
   try:
     shh_connection = netmiko.ConnectHandler(**rt1)
-    cmd_results = send_command('sh clock')
+    cmd_results = shh_connection.send_command('sh clock')
     cmd_results = cmd_results.split('\n')
     ssh_connection.disconnect()
     return render_template(
@@ -39,7 +39,7 @@ def sh_clock():
 def sh_run():
   try:
     shh_connection = netmiko.ConnectHandler(**rt1)
-    cmd_results = send_command('sh run')
+    cmd_results = shh_connection.send_command('sh run')
     cmd_results = cmd_results.split('\n')
     ssh_connection.disconnect()
     return render_template(
@@ -57,7 +57,7 @@ def sh_run():
 def sh_ip_int_br():
   try:
     shh_connection = netmiko.ConnectHandler(**rt1)
-    cmd_results = send_command('sh ip int brief')
+    cmd_results = shh_connection.send_command('sh ip int brief')
     cmd_results = cmd_results.split('\n')
     ssh_connection.disconnect()
     return render_template(
@@ -75,7 +75,7 @@ def sh_ip_int_br():
 def sh_int():
   try:
     shh_connection = netmiko.ConnectHandler(**rt1)
-    cmd_results = send_command('sh int')
+    cmd_results = shh_connection.send_command('sh int')
     cmd_results = cmd_results.split('\n')
     ssh_connection.disconnect()
     return render_template(
