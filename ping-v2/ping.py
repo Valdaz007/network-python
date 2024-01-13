@@ -1,4 +1,4 @@
-import os,csv, colorama
+import os, csv, colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 
