@@ -1,4 +1,5 @@
 from netmiko import ConnectHandler  # type: ignore
+import variables # Sensitive Variable Files
 # from pprint import pprint as prnt
 
 def main():
@@ -9,11 +10,11 @@ def main():
 
 def showBandwidth() -> dict:
     rtr = {
-        'ip': '<ipaddress>',
+        'ip': variables.ip,
         'device_type': 'cisco_ios',
-        'username': '<username>',
-        'password': '<password>',
-        'secret': '<enable_secret>',
+        'username': variables.username,
+        'password': variables.password,
+        'secret': variables.secret,
         'port': 22
     }
 
