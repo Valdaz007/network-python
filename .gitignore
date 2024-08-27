@@ -1,3 +1,4 @@
 /ping-v2/.venv
 /router-bandwidth-monitoring/.venv
 /router-bandwidth-monitoring/variables.py
+/router-bandwidth-monitoring/__pycache__
