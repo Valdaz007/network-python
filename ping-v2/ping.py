@@ -1,6 +1,6 @@
 import subprocess
-import os, csv, colorama
-from colorama import Fore, Back, Style
+import os, csv, colorama # type: ignore
+from colorama import Fore, Back, Style # type: ignore
 colorama.init(autoreset=True)
 
 def main():
