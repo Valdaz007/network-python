@@ -1,7 +1,15 @@
 from netmiko import ConnectHandler  # type: ignore
+import schedule, time # type: ignore
 import variables # Sensitive Variable Files
 
 def main():
+    schedule.every(1).minutes.do(job)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(.5)
+
+def job():
     rates = getBandwidth()  # Get Bandwidth Rates
 
     print(f'RX: {convertTo(int(rates['rx']))} mpbs') # Print Rx Rate in MBPS
