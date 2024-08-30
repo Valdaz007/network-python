@@ -1,13 +1,13 @@
-from netmiko import ConnectHandler  # type: ignore
-import schedule, time # type: ignore
+from netmiko import ConnectHandler # ConnectHandler to Create SSH Connection # type: ignore
+import schedule, time # # type: ignore
 import variables # Sensitive Variable Files
 
 def main():
-    schedule.every(1).minutes.do(job)
+    schedule.every(.5).minutes.do(job)
 
     while True:
         schedule.run_pending()
-        time.sleep(.5)
+        time.sleep(1)
 
 def job():
     rates = getBandwidth()  # Get Bandwidth Rates
@@ -26,17 +26,17 @@ def getBandwidth() -> dict:
     rtr = {     # Router Connection Info Dict
         'ip': variables.ip,
         'device_type': 'cisco_ios',
-        'username': variables.username,
-        'password': variables.password,
-        'secret': variables.secret,
-        'port': 22
+        'username': variables.username, # Router Username
+        'password': variables.password, # Router Password
+        'secret': variables.secret,     # Router Enable Secret
+        'port': 22                      # SSH Port
     }
 
     try:
         conn = ConnectHandler(**rtr)    # Create an SSH Connection with Router
         conn.enable()                   
         intf = conn.send_command('sh int g8', use_textfsm=True) # Send Command to Router
-        intf = {"rx": intf[0]['input_rate'], "tx": intf[0]['output_rate']} # Get Input & Output Rates
+        intf = {"rx": intf[0]['input_rate'], "tx": intf[0]['output_rate']} # Filter Out Input & Output Rates
         conn.disconnect()   # Close SSH Connection
         return intf     # Return Rates
     
