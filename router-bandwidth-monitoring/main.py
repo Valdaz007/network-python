@@ -12,8 +12,7 @@ def main():
 def job():
     rates = getBandwidth()  # Get Bandwidth Rates
 
-    print(f'RX: {convertTo(int(rates['rx']))} mpbs') # Print Rx Rate in MBPS
-    print(f'TX: {convertTo(int(rates['tx']))} mpbs') # Print Tx Rate in MBPS
+    print(f'RX: {convertTo(int(rates['rx']))} mpbs | TX: {convertTo(int(rates['tx']))} mpbs') # Print Rx & Tx Rate in MBPS
 
 def getBandwidth() -> dict:
     # Function Flow: 
