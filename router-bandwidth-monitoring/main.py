@@ -11,8 +11,11 @@ def main():
 
 def job():
     rates = getBandwidth()  # Get Bandwidth Rates
-
-    print(f'RX: {convertTo(int(rates['rx']))} mpbs | TX: {convertTo(int(rates['tx']))} mpbs') # Print Rx & Tx Rate in MBPS
+    
+    try:
+        print(f'RX: {convertTo(int(rates['rx']))} mpbs | TX: {convertTo(int(rates['tx']))} mpbs') # Print Rx & Tx Rate in MBPS
+    except Exception as e:
+        print(e)
 
 def getBandwidth() -> dict:
     # Function Flow: 
